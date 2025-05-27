@@ -1,4 +1,9 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
-def alguma_view(request):
-    return HttpResponse("Bem-vindo à Home!")
+def post_view(request):
+    # Aqui você pode buscar dados, preparar contexto, etc.
+    context = {
+        'title': 'Detalhes do Post',
+        'content': 'Conteúdo do post vai aqui.',
+    }
+    return render(request, 'post_detail.html', context)

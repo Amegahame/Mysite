@@ -1,4 +1,4 @@
 from django.http import HttpResponse
 
-def post_view(request):
-    return HttpResponse("Hello World")
+def alguma_view(request):
+    return HttpResponse("Bem-vindo à Home!")

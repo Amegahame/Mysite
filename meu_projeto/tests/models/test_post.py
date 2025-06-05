@@ -1,6 +1,8 @@
-import pytest
+import sys
+import os
 
-from meu_projeto.portfolio.factories import PostFactory
+import pytest
+from portfolio.factories import PostFactory
 
 
 @pytest.fixture

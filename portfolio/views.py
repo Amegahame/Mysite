@@ -1,9 +1,16 @@
+from django.http import HttpResponse
 from django.shortcuts import render
+from portfolio.models import Post
+
+def hello_view(request):
+    return HttpResponse("Hello World!")
+
+def home_view(request):
+    return HttpResponse("Página inicial")
 
 def post_view(request):
-    # Aqui você pode buscar dados, preparar contexto, etc.
+    post = Post.objects.first()
     context = {
-        'title': 'Detalhes do Post',
-        'content': 'Conteúdo do post vai aqui.',
+        'post': post,
     }
     return render(request, 'post_detail.html', context)

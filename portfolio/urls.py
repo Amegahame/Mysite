@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import hello_view, post_view, home_view
+from .views import PostView, PostDetail
 
 urlpatterns = [
-    path('', home_view, name='home'),          
-    path('hello/', hello_view, name='hello_view'),
-    path('post/', post_view, name='post_view'),
+    path('', PostView.as_view(), name='home'),           # Home na raiz
+    path('home/', PostView.as_view(), name='home_page'), # Home acessível também por /home
+    path('<slug:slug>/', PostDetail.as_view(), name='post_detail'),
 ]

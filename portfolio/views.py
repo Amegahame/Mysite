@@ -1,16 +1,10 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-from portfolio.models import Post
+from django.views import generic
+from .models import Post
 
-def hello_view(request):
-    return HttpResponse("Hello World!")
+class PostView(generic.ListView):
+    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    template_name = 'index.html'
 
-def home_view(request):
-    return HttpResponse("Página inicial")
-
-def post_view(request):
-    post = Post.objects.first()
-    context = {
-        'post': post,
-    }
-    return render(request, 'post_detail.html', context)
+class PostDetail(generic.DetailView):
+    model = Post
+    template_name = 'post_detail.html'
